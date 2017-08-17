@@ -5,55 +5,53 @@ import { TodoForm, TodoList } from "./components/todo";
 import { addTodo, generateId } from "./lib/todoHelpers";
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      todos: [
-        { id: 1, name: "Learn JSX", isComplete: false },
-        { id: 2, name: "Build Awesome App", isComplete: false },
-        { id: 3, name: "Ship It!", isComplete: false }
-      ],
-      currentTodo: "",
-      errorMessage: ''
-    };
-  }
+  state = {
+    todos: [
+      { id: 1, name: "Learn JSX", isComplete: false },
+      { id: 2, name: "Build Awesome App", isComplete: false },
+      { id: 3, name: "Ship It!", isComplete: false }
+    ],
+    currentTodo: "",
+    errorMessage: ""
+  };
 
-  handleSubmit = (evt) => {
+  handleSubmit = evt => {
     evt.preventDefault();
     const newId = generateId();
     //create the newtodo
     const newTodo = {
       name: this.state.currentTodo,
       isComplete: false,
-      id: newId,
-    }
+      id: newId
+    };
 
     //get the newtodo BEFORE set state is called
     const updatedTodos = addTodo(this.state.todos, newTodo);
 
     this.setState({
       todos: updatedTodos,
-      currentTodo: ''
+      currentTodo: ""
     });
-  }
+  };
 
-  handleInputChange = (evt) => {
+  handleInputChange = evt => {
     this.setState({
-      errorMessage: '',
+      errorMessage: "",
       currentTodo: evt.target.value
     });
   };
 
-  handleEmptySubmit = (evt) => {
-    evt.preventDefault()
+  handleEmptySubmit = evt => {
+    evt.preventDefault();
     this.setState({
-      errorMessage: 'Please supply a todo name'
-    })
-  }
-
+      errorMessage: "Please supply a todo name"
+    });
+  };
 
   render() {
-    const submitHandler = this.state.currentTodo ? this.handleSubmit : this.handleEmptySubmit;
+    const submitHandler = this.state.currentTodo
+      ? this.handleSubmit
+      : this.handleEmptySubmit;
 
     return (
       <div className="App">
@@ -62,11 +60,14 @@ class App extends Component {
           <h2>React todos</h2>
         </div>
         <div className="Todo-App">
-          {this.state.errorMessage && <span className='error'>{this.state.errorMessage}</span>}
+          {this.state.errorMessage &&
+            <span className="error">
+              {this.state.errorMessage}
+            </span>}
           <TodoForm
             handleInputChange={this.handleInputChange}
             currentTodo={this.state.currentTodo}
-            handleSubmit= { submitHandler }
+            handleSubmit={submitHandler}
           />
           <TodoList todos={this.state.todos} />
         </div>

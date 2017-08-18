@@ -49,11 +49,15 @@ li {
   color: red;
 }
 
+.success {
+  color: greentes;
+}
+
 li span.delete-item {
   visibility: hidden;
 }
 
-span.delete-item a {
+span.delete-item button {
   text-decoration: none;
   color: red;
 }
@@ -61,3 +65,13 @@ span.delete-item a {
 li:hover span.delete-item {
   visibility: visible;
 }
+
+
+.Footer button {
+  margin: 4px;
+}
+
+.Footer button.active{
+  font-weight:bold;
+}
+

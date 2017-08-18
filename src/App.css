@@ -46,7 +46,7 @@ li {
 }
 
 .error {
-  color: red;
+  color: #ba2e00;
 }
 
 .success {
@@ -59,19 +59,56 @@ li span.delete-item {
 
 span.delete-item button {
   text-decoration: none;
-  color: red;
+  color: white;
+  padding: 5px 8px;
+  margin: 5px;
+  background-color: #ba2e00;
+  border: none;
+  cursor: pointer;
 }
 
 li:hover span.delete-item {
   visibility: visible;
 }
 
+button:focus {
+  outline: 0;
+}
+
+button {
+  border-radius: 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.Footer div {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  width: 300px;
+  margin: 6px;
+}
 
 .Footer button {
-  margin: 4px;
+  transition: background-color .4s ease;
+  background-color: white;
+  border: none;
+  color: #008cba;
+  padding: 10px 27px;
+  margin-top: 10px;
+  margin: 5px;
 }
 
-.Footer button.active{
-  font-weight:bold;
+.Footer button:hover {
+  background-color: #008cba;
+  color: white;
 }
 
+.Footer button.active {
+  background-color: #008cba;
+  color: white;
+}
